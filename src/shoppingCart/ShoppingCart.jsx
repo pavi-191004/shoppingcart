@@ -7,7 +7,7 @@ export const initialCart = {
   items: [],
 };
 
-const reducer = (state, action) => {
+const Reducer = (state, action) => {
   switch (action.type) {
     case ADD_PRODUCT: {
       if (!action.payload?.id) return state;
@@ -62,7 +62,7 @@ const reducer = (state, action) => {
 };
 
 export const ShoppingCart = () => {
-  const [state, dispatch] = useReducer(reducer, initialCart);
+  const [state, Dispatch] = useReducer(Reducer, initialCart);
 
   const totalPrice =
     state.items?.reduce(
@@ -84,14 +84,14 @@ export const ShoppingCart = () => {
           <div className="product-actions">
             <button
               className="btn add-btn"
-              onClick={() => dispatch({ type: ADD_PRODUCT, payload: item })}
+              onClick={() => Dispatch({ type: ADD_PRODUCT, payload: item })}
             >
               Add
             </button>
 
             <button
               className="btn remove-btn"
-              onClick={() => dispatch({ type: REMOVE_PRODUCT, payload: item })}
+              onClick={() => Dispatch({ type: REMOVE_PRODUCT, payload: item })}
             >
               Remove
             </button>
@@ -113,14 +113,14 @@ export const ShoppingCart = () => {
           <div className="cart-actions">
             <button
               className="btn qty-btn"
-              onClick={() => dispatch({ type: INCREASE, payload: item })}
+              onClick={() => Dispatch({ type: INCREASE, payload: item })}
             >
               +
             </button>
 
             <button
               className="btn qty-btn"
-              onClick={() => dispatch({ type: DECREASE, payload: item })}
+              onClick={() => Dispatch({ type: DECREASE, payload: item })}
             >
               -
             </button>
